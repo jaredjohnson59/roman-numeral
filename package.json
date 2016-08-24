@@ -1,0 +1,23 @@
+{
+  "name": "roman-numeral",
+  "version": "1.0.0",
+  "description": "Convert Numbers to Roman Numerals (and vice-versa)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaredjohnson59/roman-numeral.git"
+  },
+  "author": "Jared Johnson <jaredjohnson59@gmail.com> (http://brightsparkprogramming.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jaredjohnson59/roman-numeral/issues"
+  },
+  "homepage": "https://github.com/jaredjohnson59/roman-numeral#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
+  }
+}
