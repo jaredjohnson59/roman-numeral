@@ -11,8 +11,8 @@ describe('Number', function(){
 
   it('should be between 1 and 3999', function()
   {
-    var number = RomanNumber(4000);
-    expect(number.toInt()).to.eql(new Error('Number must be between 1 and 3999'));
+    var invalidNumber = function(){new RomanNumber(4000)}
+    expect(invalidNumber).to.throw(Error);
   });
 
   it('should not be null');
@@ -37,7 +37,7 @@ function RomanNumber(pNumber)
 	{
 	this.number = pNumber;
 	}
-	else if(pNumber === undefined)
+	else if(pNumber !== undefined)
 	{
 		throw new Error("Please enter number");
 	}
