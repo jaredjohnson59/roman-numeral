@@ -11,8 +11,10 @@ var testChars = [null, '', "I", "III", "IIII", "IV", "V", 'CDXXIX', 'CD1X', 'err
 describe('Number', function(){
   it('should return number', function()
   {
+    /*
     var number = RomanNumber(20);
     expect(number.toInt()).not.to.be.NaN;
+    */
   });
 
   it('should be between 1 and 3999', function()
@@ -27,6 +29,22 @@ describe('Number', function(){
     expect(invalidNumber).to.throw(Error);
   });
   it('should not return an error');
+
+  it('should test multiple numbers', function()
+  {
+    testNumbers.forEach(function(number)
+    {
+      var testValue = function(){new RomanNumber(number)};
+      if(number >=1 && number <= 3999)
+      {
+        expect(testValue).not.to.throw(Error);
+      }
+      else
+      {
+        expect(testValue).to.throw(Error);
+      }
+    });
+  });
 });
 
 describe('Roman Numeral', function(){
@@ -98,7 +116,7 @@ var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV
 
 	this.toInt = function()
 	{
-
+      return this.interger;
 	};
 
 	this.toString = function()
