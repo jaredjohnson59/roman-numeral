@@ -144,14 +144,13 @@ function RomanNumber(pNumber)
    }
 
 var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1};
-
 var validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
 
    //Checks the user value added
    if(typeof pNumber === 'string')
    {
-
-     if(validator.test(pNumber) && pNumber != null && pNumber != "")
+     //Valid string to ensure it is a valid Roman Numeral
+      if(validator.test(pNumber) && pNumber !== null && pNumber !== "")
      {
        this.romanNumeral = pNumber;
      }
@@ -162,6 +161,7 @@ var validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
    }
    else
    {
+     //Check number is not empty and is between 1 and 3999
       if(pNumber !== undefined && pNumber >=1 && pNumber <= 3999)
      	{
         this.integer = pNumber;
