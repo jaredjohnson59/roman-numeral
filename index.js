@@ -117,13 +117,20 @@ var validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
 
 	this.toInt = function()
 	{
-    var	token = /[MDLV]|C[MD]?|X[CL]?|I[XV]?/g,
-      num = 0, m;
-    while (m = token.exec(this.romanNumeral))
+    if(this.romanNumeral !== undefined)
     {
-      num += lookup[m[0]];
+      var	token = /[MDLV]|C[MD]?|X[CL]?|I[XV]?/g,
+        num = 0, m;
+      while (m = token.exec(this.romanNumeral))
+      {
+        num += lookup[m[0]];
+      }
+      return num;
     }
-    return num;
+    else
+    {
+      return this.integer;
+    }
 	};
 
 	this.toString = function()
