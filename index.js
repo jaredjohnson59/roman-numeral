@@ -2,6 +2,12 @@ var chai = require('chai');
 var should = chai.should();
 var expect = chai.expect;
 
+
+
+var testNumbers = [0, 1, 3, 4, 1968, 2999, 3000, 10000];
+var testChars = [null, '', "I", "III", "IIII", "IV", "V", 'CDXXIX', 'CD1X', 'error', 'MCDLXXXII', 'MMMMCMXCIX', 'MMMMDMXCIX', '1493'];
+
+
 describe('Number', function(){
   it('should return number', function()
   {
@@ -92,13 +98,7 @@ var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV
 
 	this.toInt = function()
 	{
-		if (Number.isInteger(this.integer)) {
-		return this.integer;
-		}
-		else
-		{
 
-		}
 	};
 
 	this.toString = function()
