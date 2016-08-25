@@ -28,6 +28,11 @@ describe('Number', function(){
     var invalidNumber = function(){new RomanNumber()}
     expect(invalidNumber).to.throw(Error);
   });
+  it('should not be null', function()
+  {
+    var invalidNumber = function(){new RomanNumber(null)}
+    expect(invalidNumber).to.throw(Error);
+  });
   it('should not return an error');
 
   it('should test multiple numbers', function()
