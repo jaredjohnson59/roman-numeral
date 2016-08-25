@@ -47,6 +47,8 @@ function RomanNumber(pNumber)
         return new RomanNumber(pNumber);
    }
 
+var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1};
+
    //Checks the user value added
    if(typeof pNumber === 'string')
    {
@@ -62,7 +64,6 @@ function RomanNumber(pNumber)
    }
    else
    {
-     console.log("This is a integer");
       if(pNumber !== undefined && pNumber >=1 && pNumber <= 3999)
      	{
         this.integer = pNumber;
@@ -90,7 +91,14 @@ function RomanNumber(pNumber)
 
 	this.toString = function()
 	{
-		return this.romanNumeral;
+    var roman = '';
+    for ( var i in lookup ) {
+    while ( this.integer >= lookup[i] ) {
+      roman += i;
+      this.integer -= lookup[i];
+    }
+  }
+    return roman;
 	};
 
 
