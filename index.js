@@ -51,6 +51,11 @@ describe('Number', function(){
       }
     });
   });
+  it('should return same value if already in correct format', function()
+  {
+    var number = RomanNumber(21);
+    expect(number.toInt()).to.equal(21);
+  });
 });
 
 //Test for Roman Numerals
@@ -102,6 +107,11 @@ describe('Roman Numeral', function(){
         expect(testValue).to.throw(Error);
       }
     });
+  });
+  it('should return same value if already in correct format', function()
+  {
+    var number = RomanNumber("XXI");
+    expect(number.toString()).to.equal("XXI");
   });
 });
 
