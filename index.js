@@ -26,8 +26,7 @@ describe('Number', function(){
 describe('Roman Numeral', function(){
   it('should validate to ensure a valid roman numeral was entered', function()
   {
-    var number = RomanNumber("XX");
-    expect(number.toString()).to.equal("XX");
+
   });
   it('should throw error if roman numeral is not valid', function()
   {
@@ -35,10 +34,23 @@ describe('Roman Numeral', function(){
     expect(number).to.throw(Error);
   });
 
-  it('should return roman numeral');
+  it('should return roman numeral', function()
+  {
+    var number = RomanNumber(21);
+    expect(number.toString()).to.equal("XXI");
+  });
+
   it('should be between 1 and 3999');
-  it('should not be null');
-  it('should not return an error');
+  it('should not be null', function()
+  {
+    var number = function(){new RomanNumber(null)}
+    expect(number).to.throw(Error);
+  });
+  it('should not return an error', function()
+  {
+    var number = function(){new RomanNumber("XX")}
+    expect(number).to.not.throw(Error);
+  });
 });
 
 function RomanNumber(pNumber)
@@ -92,12 +104,13 @@ var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV
 	this.toString = function()
 	{
     var roman = '';
+
     for ( var i in lookup ) {
-    while ( this.integer >= lookup[i] ) {
-      roman += i;
-      this.integer -= lookup[i];
+      while ( this.integer >= lookup[i] ) {
+        roman += i;
+        this.integer -= lookup[i];
+      }
     }
-  }
     return roman;
 	};
 
