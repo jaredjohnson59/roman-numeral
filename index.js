@@ -15,7 +15,11 @@ describe('Number', function(){
     expect(invalidNumber).to.throw(Error);
   });
 
-  it('should not be null');
+  it('should not be null', function()
+  {
+    var invalidNumber = function(){new RomanNumber()}
+    expect(invalidNumber).to.throw(Error);
+  });
   it('should not return an error');
 });
 
@@ -32,30 +36,37 @@ function RomanNumber(pNumber)
         return new RomanNumber(pNumber);
    }
 
-   //Checks if user enter number
-	if(pNumber !== undefined && pNumber >=1 && pNumber <= 3999)
-	{
-	this.number = pNumber;
-	}
-	else if(pNumber !== undefined)
-	{
-		throw new Error("Please enter number");
-	}
-  else
-  {
-      throw new Error("Number must be between 1 and 3999");
-  }
-
+   //Checks the user value added
+   if(typeof pNumber === 'string')
+   {
+     this.romanNumeral = pNumber;
+   }
+   else
+   {
+     console.log("This is a integer");
+      if(pNumber !== undefined && pNumber >=1 && pNumber <= 3999)
+     	{
+        this.integer = pNumber;
+      }
+      else if(pNumber !== undefined)
+    	{
+    		throw new Error("Please enter number");
+    	}
+      else
+      {
+          throw new Error("Number must be between 1 and 3999");
+      }
+   }
 
 	this.toInt = function()
 	{
-		if (Number.isInteger(this.number)) {
-		return this.number;
+		if (Number.isInteger(this.integer)) {
+		return this.integer;
 		}
 		else
 		{
 			console.log("This is a string");
-			return this.number;
+			return this.romanNumeral;
 		}
 	};
 
@@ -66,4 +77,9 @@ function RomanNumber(pNumber)
 		}
 
 	};
+
+
+
+
+
 }
