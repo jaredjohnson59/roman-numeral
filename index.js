@@ -9,6 +9,8 @@ var testChars = [null, '', "I", "III", "IIII", "IV", "V", 'CDXXIX', 'CD1X', 'err
 var testAll = [0, 1, 3, 4, 1968, 2999, 3000, 10000, null, '', "I", "III", "IIII", "IV", "V", 'CDXXIX', 'CD1X', 'error', 'MCDLXXXII', 'MMMMCMXCIX', 'MMMMDMXCIX', '1493'];
 
 
+
+//Test Suite for Numbers
 describe('Number', function(){
   it('should return number', function()
   {
@@ -51,6 +53,7 @@ describe('Number', function(){
   });
 });
 
+//Test for Roman Numerals
 describe('Roman Numeral', function(){
   it('should validate to ensure a valid roman numeral was entered', function()
   {
@@ -102,6 +105,8 @@ describe('Roman Numeral', function(){
   });
 });
 
+
+//Test for Numbers and Roman Numerals
 describe('All Values', function(){
   it('should test all values', function()
   {
@@ -197,11 +202,11 @@ var validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
 	this.toString = function()
 	{
     var roman = '';
-
+    var num = this.integer;
     for ( var i in lookup ) {
-      while ( this.integer >= lookup[i] ) {
+      while ( num >= lookup[i] ) {
         roman += i;
-        this.integer -= lookup[i];
+        num -= lookup[i];
       }
     }
     return roman;
