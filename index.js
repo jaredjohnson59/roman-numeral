@@ -6,6 +6,7 @@ var expect = chai.expect;
 
 var testNumbers = [0, 1, 3, 4, 1968, 2999, 3000, 10000];
 var testChars = [null, '', "I", "III", "IIII", "IV", "V", 'CDXXIX', 'CD1X', 'error', 'MCDLXXXII', 'MMMMCMXCIX', 'MMMMDMXCIX', '1493'];
+var testAll = [0, 1, 3, 4, 1968, 2999, 3000, 10000, null, '', "I", "III", "IIII", "IV", "V", 'CDXXIX', 'CD1X', 'error', 'MCDLXXXII', 'MMMMCMXCIX', 'MMMMDMXCIX', '1493'];
 
 
 describe('Number', function(){
@@ -33,8 +34,6 @@ describe('Number', function(){
     var invalidNumber = function(){new RomanNumber(null)}
     expect(invalidNumber).to.throw(Error);
   });
-  it('should not return an error');
-
   it('should test multiple numbers', function()
   {
     testNumbers.forEach(function(number)
@@ -99,6 +98,41 @@ describe('Roman Numeral', function(){
       {
         expect(testValue).to.throw(Error);
       }
+    });
+  });
+});
+
+describe('All Values', function(){
+  it('should test all values', function()
+  {
+    testAll.forEach(function(number)
+    {
+      var testValue = function(){new RomanNumber(number)};
+      var validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
+
+
+      if(typeof number === 'string')
+      {
+        if(validator.test(number) && number != null && number != "")
+        {
+          expect(testValue).not.to.throw(Error);
+        }
+        else {
+          expect(testValue).to.throw(Error);
+        }
+      }
+      else
+      {
+        if(number >=1 && number <= 3999)
+        {
+          expect(testValue).not.to.throw(Error);
+        }
+        else
+        {
+          expect(testValue).to.throw(Error);
+        }
+      }
+
     });
   });
 });
