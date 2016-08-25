@@ -23,7 +23,7 @@ describe('Number', function(){
     expect(invalidNumber).to.throw(Error);
   });
 
-  it('should not be null', function()
+  it('should not be undefined', function()
   {
     var invalidNumber = function(){new RomanNumber()}
     expect(invalidNumber).to.throw(Error);
@@ -90,7 +90,7 @@ var validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
    if(typeof pNumber === 'string')
    {
 
-     if(validator.test(pNumber))
+     if(validator.test(pNumber) && pNumber != null && pNumber != "")
      {
        this.romanNumeral = pNumber;
      }
@@ -145,9 +145,4 @@ var validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
     }
     return roman;
 	};
-
-
-
-
-
 }
