@@ -24,6 +24,17 @@ describe('Number', function(){
 });
 
 describe('Roman Numeral', function(){
+  it('should validate to ensure a valid roman numeral was entered', function()
+  {
+    var number = RomanNumber("XX");
+    expect(number.toString()).to.equal("XX");
+  });
+  it('should throw error if roman numeral is not valid', function()
+  {
+    var number = function(){new RomanNumber("JARED")}
+    expect(number).to.throw(Error);
+  });
+
   it('should return roman numeral');
   it('should be between 1 and 3999');
   it('should not be null');
@@ -39,7 +50,15 @@ function RomanNumber(pNumber)
    //Checks the user value added
    if(typeof pNumber === 'string')
    {
-     this.romanNumeral = pNumber;
+     var validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
+     if(validator.test(pNumber))
+     {
+       this.romanNumeral = pNumber;
+     }
+     else
+     {
+        throw new Error("Please enter valid Roman Numeral");
+     }
    }
    else
    {
@@ -65,17 +84,13 @@ function RomanNumber(pNumber)
 		}
 		else
 		{
-			console.log("This is a string");
-			return this.romanNumeral;
+
 		}
 	};
 
 	this.toString = function()
 	{
-		if (Number.isInteger(this.number)) {
-		return this.number;
-		}
-
+		return this.romanNumeral;
 	};
 
 
