@@ -201,14 +201,21 @@ var validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
 
 	this.toString = function()
 	{
-    var roman = '';
-    var num = this.integer;
-    for ( var i in lookup ) {
-      while ( num >= lookup[i] ) {
-        roman += i;
-        num -= lookup[i];
-      }
+    if(this.romanNumeral !== undefined)
+    {
+      return this.romanNumeral;
     }
-    return roman;
+    else {
+      var roman = '';
+      var num = this.integer;
+      for ( var i in lookup ) {
+        while ( num >= lookup[i] ) {
+          roman += i;
+          num -= lookup[i];
+        }
+      }
+      return roman;
+    }
+
 	};
 }
