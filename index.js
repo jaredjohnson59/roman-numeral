@@ -84,11 +84,12 @@ function RomanNumber(pNumber)
    }
 
 var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1};
+var validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
 
    //Checks the user value added
    if(typeof pNumber === 'string')
    {
-     var validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/;
+
      if(validator.test(pNumber))
      {
        this.romanNumeral = pNumber;
@@ -116,7 +117,13 @@ var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV
 
 	this.toInt = function()
 	{
-      return this.interger;
+    var	token = /[MDLV]|C[MD]?|X[CL]?|I[XV]?/g,
+      num = 0, m;
+    while (m = token.exec(this.romanNumeral))
+    {
+      num += lookup[m[0]];
+    }
+    return num;
 	};
 
 	this.toString = function()
